@@ -20,7 +20,7 @@ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 sudo apt-get update
 
 # install everything
-sudo apt-get -y --force-yes install git gcc make build-essential python-setuptools nodejs zsh unzip wget software-properties-common mongodb-org
+sudo apt-get -y --force-yes install git gcc make build-essential python-setuptools nodejs zsh unzip wget software-properties-common nginx mongodb-org
 
 # start mongo!
 sudo service mongod start
