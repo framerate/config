@@ -2,7 +2,7 @@ echo '>> SETTING USER PW <<'
 sudo passwd ubuntu
 
 echo '>> SETTING USER SSH KEY <<'
-ssh-keygen -t rsa -b 4096 -C "framerate@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "<email>"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
