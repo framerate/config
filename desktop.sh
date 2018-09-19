@@ -23,7 +23,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get update
 
 # install everything
-sudo apt-get -y --force-yes install git gcc make build-essential python-setuptools nodejs zsh unzip wget software-properties-common nginx
+sudo apt-get -y --force-yes install git gcc make build-essential python-setuptools nodejs zsh unzip wget software-properties-common mongodb-org
 
 # finaly, print the SSH key so we can add it to github...
 cat ~/.ssh/id_rsa.pub
