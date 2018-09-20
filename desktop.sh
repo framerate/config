@@ -24,18 +24,17 @@ then
     # Node 8.X
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
+    # install everything
+    echo "*** INSTALLING FOUNDATION ***"
+    sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
+
     # Atom
     wget https://github.com/atom/atom/releases/download/v1.9.2/atom-amd64.deb
     sudo dpkg -i atom-amd64.deb
 
     # update
     sudo apt-get update
-
-
-    # install everything
-    echo "*** INSTALLING FOUNDATION ***"
-    sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
-
+    
     # install troublesome ones
     echo "*** INSTALLING TROUBLESOME STUFF ***"
     sudo apt-get -y install mongodb nodejs atom
