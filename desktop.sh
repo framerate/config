@@ -5,7 +5,7 @@ then
     fi
 
     echo '>> SETTING USER PW <<'
-    sudo passwd 
+    sudo passwd $USER
 
     echo '>> SETTING USER SSH KEY <<'
     ssh-keygen -t rsa -b 4096 -C $1
