@@ -6,7 +6,7 @@ then
     fi
 
     echo '>> SETTING USER PW <<'
-    #sudo passwd ubuntu
+    sudo passwd 
 
     echo '>> SETTING USER SSH KEY <<'
     ssh-keygen -t rsa -b 4096 -C $1
@@ -33,8 +33,14 @@ then
     sudo apt-get update
 
     # install everything
-    sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools nodejs zsh unzip wget software-properties-common mongodb atom
+    sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
 
+    # install troublesome ones
+    sudo apt-get -y install mongodb nodejs atom
+
+    # fix it
+    sudo apt-get -y --fix-broken install
+    
     # finaly, print the SSH key so we can add it to github...
     cat ~/.ssh/id_rsa.pub
 
