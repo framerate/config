@@ -29,7 +29,7 @@ then
     sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
 
     # Atom
-    wget https://github.com/atom/atom/releases/download/v1.9.2/atom-amd64.deb
+    wget "https://atom.io/download/deb" -O atom-amd64.deb
     sudo dpkg -i atom-amd64.deb
 
     # update
