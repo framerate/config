@@ -1,4 +1,3 @@
-
 if [ "$1" = "" ]
 then
           echo "Usage: $0 Must pass EMAIL_ADDRESS as first argument!"
@@ -32,15 +31,19 @@ then
     # update
     sudo apt-get update
 
+
     # install everything
+    echo "*** INSTALLING FOUNDATION ***"
     sudo apt-get -y --force-yes install git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
 
     # install troublesome ones
+    echo "*** INSTALLING TROUBLESOME STUFF ***"
     sudo apt-get -y install mongodb nodejs atom
 
     # fix it
+    echo "*** FIXING BROKEN INSTALLS ***"    
     sudo apt-get -y --fix-broken install
-    
+
     # finaly, print the SSH key so we can add it to github...
     cat ~/.ssh/id_rsa.pub
 
