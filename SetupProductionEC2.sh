@@ -17,7 +17,7 @@ ssh-add ~/.ssh/id_rsa
 sudo ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
 # Node 8.X
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 
 # update
 sudo apt-get update
