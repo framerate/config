@@ -22,7 +22,7 @@ then
     sudo apt-get install -y --force-yes gnupg software-properties-common wget
 
     # Node 8.X
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 
     # install everything
     echo "*** INSTALLING FOUNDATION ***"
@@ -42,6 +42,10 @@ then
     # fix it
     echo "*** FIXING BROKEN INSTALLS ***"    
     sudo apt-get -y --fix-broken install
+    
+    # install nvm
+    echo "*** INSTALL NVM ***"    
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
     # finaly, print the SSH key so we can add it to github...
     cat ~/.ssh/id_rsa.pub
