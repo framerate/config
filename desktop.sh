@@ -32,9 +32,9 @@ echo ':: Installing System Foundation...'
 sudo apt-get -y --force-yes install gnupg software-properties-common wget git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
 
 # Atom
-echo ':: Downloading & Installing Deb for Atom'
-wget "https://atom.io/download/deb" -O atom-amd64.deb
-sudo dpkg -i atom-amd64.deb
+# echo ':: Downloading & Installing Deb for Atom'
+# wget "https://atom.io/download/deb" -O atom-amd64.deb
+# sudo dpkg -i atom-amd64.deb
 
 echo ':: Fixing Broken Installs'
 sudo apt-get -y --fix-broken install
@@ -47,8 +47,15 @@ sudo apt-get -y install mongodb nodejs
 echo ":: Installing Node Version Manager"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 
+# oh-my-zsh
 echo ":: Installing OhMyZsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# vscode
+echo ':: Downloading & Installing Deb for VSCode'
+curl -L "https://go.microsoft.com/fwlink/?LinkID=760868" > vscode.deb
+sudo apt install ./vscode.deb
+rm ./vscode.deb
 
 # finaly, print the SSH key so we can add it to github...
 cat ~/.ssh/id_rsa.pub
