@@ -18,9 +18,9 @@ ssh-add ~/.ssh/id_rsa
 echo ':: SETTING LOCAL TIME'
 sudo ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
-# Node 10.X
+# Node 12.X
 echo ':: Adding Repository for NodeJS'
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 # Update Aptitude
 echo ':: Updating Sources'
