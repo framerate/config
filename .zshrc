@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster" #avit kardan agnoster
+ZSH_THEME="avit" #agnoster kardan agnoster
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,8 +45,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew bower npm osx)
-
+plugins=(git nvm node npm)
+export NVMAUTOLOAD=1
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -61,7 +61,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nano'
  else
-   export EDITOR='atom'
+   export EDITOR='code'
  fi
 
 # Compilation flags
@@ -78,7 +78,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias edit="atom ./ && grunt --force"
+alias edit="code ./"
 
 HELPDIR=/usr/local/share/zsh/help
 
