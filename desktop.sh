@@ -10,7 +10,8 @@ echo ':: SETTING USER PW'
 sudo passwd $USER
 
 echo ':: SETTING USER SSH KEY'
-ssh-keygen -t rsa -b 4096 -C $1
+#ssh-keygen -t rsa -b 4096 -C $1
+ssh-keygen -t ed25519 -C $1
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
@@ -18,14 +19,25 @@ ssh-add ~/.ssh/id_rsa
 echo ':: SETTING LOCAL TIME'
 sudo ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
-# Node 12.X
-echo ':: Adding Repository for NodeJS'
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-
 # Update Aptitude
 echo ':: Updating Sources'
 sudo apt-get update
 sudo apt-get upgrade -y
+
+echo ':: MAKING SURE CURL IS INSTALLED'
+sudo apt -y install curl
+
+# setup vscode repository
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+sudo apt -y install apt-transport-https
+sudo apt update
+
+# Node 16.X
+echo ':: Adding Repository for NodeJS'
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
 # Install Foundation
 echo ':: Installing System Foundation...'
@@ -51,11 +63,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 echo ":: Installing OhMyZsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# vscode
-echo ':: Downloading & Installing Deb for VSCode'
-curl -L "https://go.microsoft.com/fwlink/?LinkID=760868" > vscode.deb
-sudo apt install ./vscode.deb
-rm ./vscode.deb
+# remove any old packages
+sudo apt autoremove
 
 # finaly, print the SSH key so we can add it to github...
-cat ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_ed25519.pub
