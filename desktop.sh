@@ -27,6 +27,12 @@ sudo apt-get upgrade -y
 echo ':: MAKING SURE CURL IS INSTALLED'
 sudo apt -y install curl
 
+# add universe repository for fira-code
+sudo add-apt-repository universe
+
+# add repository for plata noir theme
+sudo add-apt-repository ppa:tista/plata-theme
+
 # setup vscode repository
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -53,7 +59,7 @@ sudo apt-get -y --fix-broken install
 
 # install troublesome ones
 echo ":: INSTALLING TROUBLESOME STUFF"
-sudo apt-get -y install mongodb nodejs
+sudo apt-get -y install mongodb nodejs fonts-firacode plata-theme
 
 # install nvm
 echo ":: Installing Node Version Manager"
