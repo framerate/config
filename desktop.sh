@@ -59,11 +59,12 @@ sudo apt-get -y --fix-broken install
 
 # install troublesome ones
 echo ":: INSTALLING TROUBLESOME STUFF"
-sudo apt-get -y install mongodb nodejs fonts-firacode plata-theme
+sudo apt-get -y install mongodb nodejs fonts-firacode 
+# plata-theme
 
 # install nvm
 echo ":: Installing Node Version Manager"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 # oh-my-zsh
 echo ":: Installing OhMyZsh"
