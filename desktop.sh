@@ -35,7 +35,7 @@ echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *
 
 # add universe repository for fira-code
 echo "Adding universe repository"
-sudo add-apt-repository universe
+sudo add-apt-repository --yes universe
 
 # update everything
 sudo apt-get update
@@ -44,9 +44,6 @@ sudo apt-get update
 echo ':: Installing System Foundation...'
 sudo apt-get -y --force-yes install curl gnupg software-properties-common wget git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common nodejs zsh-syntax-highlighting
 
-echo ':: Fixing Broken Installs'
-sudo apt-get -y --fix-broken install
-
 # install troublesome ones
 echo ":: Installing Additional Stuff"
 sudo apt-get -y install fonts-firacode glow 
@@ -54,6 +51,9 @@ sudo apt-get -y install fonts-firacode glow
 # install nvm
 echo ":: Installing Node Version Manager"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+echo ':: Fixing Broken Installs'
+sudo apt-get -y --fix-broken install
 
 # remove any old packages
 sudo apt autoremove
