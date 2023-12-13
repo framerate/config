@@ -27,44 +27,33 @@ sudo apt-get upgrade -y
 echo ':: MAKING SURE CURL IS INSTALLED'
 sudo apt -y install curl
 
+# Setup repo for glow
+echo "Setting up repository for GLOW"
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+
 # add universe repository for fira-code
+echo "Adding universe repository"
 sudo add-apt-repository universe
 
-# add repository for plata noir theme
-sudo add-apt-repository ppa:tista/plata-theme
-
-# setup vscode repository
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-rm -f packages.microsoft.gpg
-sudo apt -y install apt-transport-https
-sudo apt update
-
-# Node 16.X
-echo ':: Adding Repository for NodeJS'
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+# update everything
+sudo apt-get update
 
 # Install Foundation
 echo ':: Installing System Foundation...'
-sudo apt-get -y --force-yes install gnupg software-properties-common wget git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common
-
-# Atom
-# echo ':: Downloading & Installing Deb for Atom'
-# wget "https://atom.io/download/deb" -O atom-amd64.deb
-# sudo dpkg -i atom-amd64.deb
+sudo apt-get -y --force-yes install curl gnupg software-properties-common wget git gcc g++ make build-essential python-setuptools zsh unzip wget software-properties-common nodejs zsh-syntax-highlighting
 
 echo ':: Fixing Broken Installs'
 sudo apt-get -y --fix-broken install
 
 # install troublesome ones
-echo ":: INSTALLING TROUBLESOME STUFF"
-sudo apt-get -y install mongodb nodejs fonts-firacode 
-# plata-theme
+echo ":: Installing Additional Stuff"
+sudo apt-get -y install fonts-firacode glow 
 
 # install nvm
 echo ":: Installing Node Version Manager"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # oh-my-zsh
 echo ":: Installing OhMyZsh"
