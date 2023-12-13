@@ -55,12 +55,14 @@ sudo apt-get -y install fonts-firacode glow
 echo ":: Installing Node Version Manager"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# oh-my-zsh
-echo ":: Installing OhMyZsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 # remove any old packages
 sudo apt autoremove
 
 # finaly, print the SSH key so we can add it to github...
+echo "***************SSH KEY HERE "
 cat ~/.ssh/id_ed25519.pub
+echo "*****************************" 
+
+# oh-my-zsh
+echo ":: Installing OhMyZsh"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
